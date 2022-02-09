@@ -147,9 +147,7 @@ class QuickOrderTransferBuilder implements QuickOrderTransferBuilderInterface
             return $quickOrderItemTransfer;
         }
 
-        /** @var array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers */
-        $productConcreteTransfers = [$quickOrderItemTransfer->getProductConcrete()];
-        $expandedProductConcretes = $this->productConcreteExpander->expand($productConcreteTransfers);
+        $expandedProductConcretes = $this->productConcreteExpander->expand([$quickOrderItemTransfer->getProductConcrete()]);
         $quickOrderItemTransfer->setProductConcrete($expandedProductConcretes[0]);
 
         return $quickOrderItemTransfer;
